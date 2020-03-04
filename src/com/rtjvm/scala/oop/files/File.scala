@@ -10,6 +10,10 @@ class File(override val parentPath: String, override val name: String, val conte
   override def getType: String = "File"
 
   override def asFile: File = this
+
+  override def isDirectory: Boolean = false
+
+  override def isFile: Boolean = true
 }
 
 object File {

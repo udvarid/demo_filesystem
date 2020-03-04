@@ -1,7 +1,15 @@
 package com.rtjvm.scala.oop.files
 
 abstract class DirEntry(val parentPath: String, val name: String) {
-  def path: String = parentPath + Directory.SEPARATOR + name
+  def isDirectory: Boolean
+  def isFile: Boolean
+
+  def path: String = {
+    val seperatorIfNecessery =
+      if (Directory.ROOT_PATH.equals(parentPath)) ""
+      else Directory.SEPARATOR
+    parentPath + seperatorIfNecessery + name
+  }
 
   def asDirectory: Directory
 

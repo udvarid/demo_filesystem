@@ -6,7 +6,12 @@ import scala.annotation.tailrec
 
 class Directory(override val parentPath: String, override val name: String, val contents: List[DirEntry])
   extends DirEntry(parentPath, name) {
+  def isRoot: Boolean = parentPath.isEmpty
 
+
+  override def isDirectory: Boolean = true
+
+  override def isFile: Boolean = false
 
   override def asFile: File = throw new FilesytemException("A directory can not converted to a file")
 
