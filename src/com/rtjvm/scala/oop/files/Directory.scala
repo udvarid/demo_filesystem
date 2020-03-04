@@ -1,10 +1,14 @@
 package com.rtjvm.scala.oop.files
 
+import com.rtjvm.scala.oop.filesystem.FilesytemException
+
 import scala.annotation.tailrec
 
 class Directory(override val parentPath: String, override val name: String, val contents: List[DirEntry])
   extends DirEntry(parentPath, name) {
 
+
+  override def asFile: File = throw new FilesytemException("A directory can not converted to a file")
 
   def getType: String = "Directory"
 
